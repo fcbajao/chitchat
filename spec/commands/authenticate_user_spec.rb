@@ -14,7 +14,7 @@ RSpec.describe AuthenticateUser do
         it "sets result to token with user data" do
           token = command.result
           data = JsonWebToken.decode(token)
-          expect(data).to include(user_id: user.id, username: user.username)
+          expect(data).to include(id: user.id, username: user.username)
         end
       end
 
@@ -40,7 +40,7 @@ RSpec.describe AuthenticateUser do
       it "sets result to token with user data" do
         token = command.result
         data = JsonWebToken.decode(token)
-        expect(data).to include(user_id: newuser.id, username: newuser.username)
+        expect(data).to include(id: newuser.id, username: newuser.username)
       end
     end
   end

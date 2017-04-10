@@ -1,12 +1,13 @@
 // @flow
 
 export type User = {
-  +userId: number,
+  +id: number,
   +username: string
 }
 
 export type Auth = {
-  +currentUser: ?User
+  +currentUser: ?User,
+  +token: ?string
 }
 
 export type UserCredentials = {

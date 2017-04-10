@@ -9,9 +9,6 @@ const authenticate = (credentials: UserCredentials) => {
   .then(function (response) {
     return Promise.resolve(response.data.token)
   })
-  .catch(function (error) {
-    console.log('error:', error)
-  })
 }
 
 export default {

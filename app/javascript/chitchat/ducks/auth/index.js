@@ -6,14 +6,16 @@ export { default as actions } from './actions'
 export { default as authSaga } from './sagas'
 
 const initialState = {
-  currentUser: null
+  currentUser: null,
+  token: null
 }
 
 export default function reducer (state: Auth = initialState, action: Action): Auth {
   switch (action.type) {
     case types.SET_USER:
       return {
-        currentUser: action.payload.user
+        currentUser: action.payload.user,
+        token: action.payload.token
       }
     default:
       return state

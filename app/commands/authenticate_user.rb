@@ -2,13 +2,13 @@ class AuthenticateUser
   prepend SimpleCommand
 
   def initialize(username, password)
-    @username = username
-    @password = password
+    @username = username.strip
+    @password = password.strip
   end
 
   def call
     if user.authenticate(@password)
-      JsonWebToken.encode(user_id: user.id, username: user.username)
+      JsonWebToken.encode(id: user.id, username: user.username)
     else
       errors.add(:authenticate, "Invalid username or password.")
     end

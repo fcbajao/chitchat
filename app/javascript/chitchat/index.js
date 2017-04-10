@@ -5,9 +5,9 @@ import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
+import axios from 'axios'
 import rootReducer, { rootSaga } from './ducks'
 import App from './containers/App'
-import axios from 'axios'
 
 const csrfToken = document.querySelector('meta[name=csrf-token]')
 if (csrfToken) {
