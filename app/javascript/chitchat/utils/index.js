@@ -5,7 +5,7 @@ export function validateRequired (fieldNames: Array<string>) {
     const errors = {}
 
     fieldNames.forEach(name => {
-      if (!values[name]) {
+      if (!values[name] || !values[name].trim()) {
         errors[name] = 'Required'
       }
     })

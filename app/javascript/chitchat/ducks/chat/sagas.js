@@ -47,7 +47,8 @@ export function * sendMessage (): Generator<any, any, any> {
   try {
     while (true) {
       const { payload } = yield take(types.SEND_MESSAGE)
-      subscription.speak(payload.message)
+      yield call([subscription, subscription.speak], payload.message)
+      yield put(actions.sentMessage())
     }
   } finally {
     console.log('terminated')

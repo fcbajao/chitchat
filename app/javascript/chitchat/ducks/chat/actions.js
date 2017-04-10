@@ -19,6 +19,13 @@ const sendMessage = (message: string): Action => {
   }
 }
 
+const sentMessage = (): Action => {
+  return {
+    type: types.SENT_MESSAGE,
+    payload: {}
+  }
+}
+
 const connected = (subscription: Object): Action => {
   return {
     type: types.CONNECTED,
@@ -47,6 +54,7 @@ const renderMessage = (message: Message): Action => {
 export default {
   joinChat,
   sendMessage,
+  sentMessage,
   connected,
   receivedMessage,
   renderMessage

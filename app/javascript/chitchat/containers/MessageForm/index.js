@@ -3,11 +3,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { actions } from '../../ducks/chat'
+import { validateRequired } from '../../utils'
 
 const MessageForm = (props: { handleSubmit: Function, onSubmit: Function }) => {
   return <form className='message-form' onSubmit={props.handleSubmit(props.onSubmit)}>
     <div className='message-form__input-container'>
-      <Field name='message' className='message-form__input' normalize={value => value.trim()} component='input' type='text' />
+      <Field name='message' className='message-form__input' component='input' type='text' />
     </div>
     <div className='message-form__action-container'>
       <button className='message-form__send-btn' type='submit'>Send</button>
@@ -29,16 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   }
 }
 
-const validate = (values) => {
-  const errors = {}
-
-  if (!values.message) {
-    errors.message = 'Required'
-  }
-
-  return errors
-}
-
+const validate = validateRequired(['message'])
 const connected = connect(mapStateToProps, mapDispatchToProps)(MessageForm)
 
 export default reduxForm({

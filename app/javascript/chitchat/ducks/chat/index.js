@@ -4,6 +4,7 @@ import type { Chat } from './flowTypes'
 import types from './types'
 export { default as actions } from './actions'
 export { default as chatSaga } from './sagas'
+export { default as types } from './types'
 
 const initialState = {
   messages: []
