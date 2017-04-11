@@ -23,6 +23,26 @@ $font-size: (
   medium: 18px,
 );
 
+$breakpoints: (
+  small: (max-width: 767px)
+);
+
+@mixin respond-to($name) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $name) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
 %action-btn {
   background-color: map-get($color, action);
   color: map-get($color, white);
@@ -62,6 +82,13 @@ fieldset {
   margin: map-get($space, xlarge) auto 0;
   padding: map-get($space, large);
   width: 600px;
+
+  @include respond-to(small) {
+    border: 0;
+    height: 100%;
+    margin: 0;
+    width: auto;
+  }
 
   &__heading {
     color: map-get($color, dark);
