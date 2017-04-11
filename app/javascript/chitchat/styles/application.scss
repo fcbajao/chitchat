@@ -27,6 +27,7 @@ $breakpoints: (
   small: (max-width: 767px)
 );
 
+// Thanks: https://www.sitepoint.com/managing-responsive-breakpoints-sass/
 @mixin respond-to($name) {
   // If the key exists in the map
   @if map-has-key($breakpoints, $name) {
@@ -83,23 +84,16 @@ fieldset {
   padding: map-get($space, large);
   width: 600px;
 
-  @include respond-to(small) {
-    border: 0;
-    height: 100%;
-    margin: 0;
-    width: auto;
-  }
-
   &__heading {
     color: map-get($color, dark);
-    font-size: map-get($font-size, xlarge); 
+    font-size: map-get($font-size, xlarge);
     margin-bottom: map-get($space, large);
     text-align: center;
   }
 
   &__intro {
     color: map-get($color, dark);
-    font-size: map-get($font-size, large); 
+    font-size: map-get($font-size, large);
     margin-bottom: map-get($space, xlarge);
     text-align: center;
   }
@@ -107,12 +101,27 @@ fieldset {
   &__form {
     padding: 0 map-get($space, medium);
   }
+
+  @include respond-to(small) {
+    border: 0;
+    height: 100%;
+    margin: 0;
+    width: auto;
+
+    &__heading {
+      font-size: map-get($font-size, large);
+    }
+
+    &__intro {
+      font-size: map-get($font-size, medium);
+    }
+  }
 }
 
 .login-form {
   &__error {
     color: map-get($color, alert);
-    font-size: map-get($font-size, large); 
+    font-size: map-get($font-size, large);
     margin-bottom: map-get($space, medium);
     text-align: center;
   }
@@ -136,16 +145,22 @@ fieldset {
   &__text-input {
     @extend %text-input;
     border: 1px solid map-get($color, medium);
-    font-size: map-get($font-size, large); 
+    font-size: map-get($font-size, large);
     padding: map-get($space, small) map-get($space, medium);
   }
 
   &__submit-btn {
     @extend %action-btn;
     display: block;
-    font-size: map-get($font-size, large); 
+    font-size: map-get($font-size, large);
     margin: 0 auto;
     padding: map-get($space, small) map-get($space, medium);
+  }
+
+  @include respond-to(small) {
+    &__error, &__text-input, &__submit-btn {
+      font-size: map-get($font-size, medium);
+    }
   }
 }
 
