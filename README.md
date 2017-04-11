@@ -35,13 +35,13 @@ These are the notable tools/libraries/frameworks that I used:
 
 The app still has a long way to go and there are more tools that I need to explore. Here are the things that I still need to add:
 
-- [  ] Add jest tests
-- [  ] Add CI build
-- [  ] HMR
-- [  ] Add support for storing token in localStorage
-- [  ] Show previous messages
-- [  ] Show online users
-- [  ] Use Docker
+- [ ] Add jest tests
+- [ ] Add CI build
+- [ ] HMR
+- [ ] Add support for storing token in localStorage
+- [ ] Show previous messages
+- [ ] Show online users
+- [ ] Use Docker
 
 ## Acknowledgments
 
