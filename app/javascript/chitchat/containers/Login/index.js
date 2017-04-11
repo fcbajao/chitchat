@@ -15,18 +15,21 @@ const Login = (props: { auth: Auth, handleSubmit: Function, onSubmit: Function, 
     }} />
   } else {
     return <div className='login'>
-      <p className='login__intro'>Join chitchat! Just enter your username and password. If a user with the given username does not exist, a new account will be created with the given password.</p>
-      <form className='login__form' onSubmit={props.handleSubmit(props.onSubmit)}>
-        <p className='login__error'>{props.error}</p>
-        <div>
-          <label htmlFor='username'>Username</label>
-          <Field name='username' component='input' type='text' />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <Field name='password' component='input' type='password' />
-        </div>
-        <button type='submit'>Join</button>
+      <h1 className='login__heading'>Join chitchat!</h1>
+      <p className='login__intro'>If a user with the given username does not exist, a new account will be created with the given password.</p>
+      <form className='login__form login-form' onSubmit={props.handleSubmit(props.onSubmit)}>
+        <p className='login-form__error'>{props.error}</p>
+        <fieldset className='login-form__fieldset'>
+          <div className='login-form__field'>
+            <label className='login-form__label' htmlFor='username'>Username</label>
+            <Field name='username' component='input' placeholder='Username' className='login-form__text-input' type='text' />
+          </div>
+          <div className='login-form__field'>
+            <label className='login-form__label' htmlFor='password'>Password</label>
+            <Field name='password' component='input' placeholder='Password' className='login-form__text-input' type='password' />
+          </div>
+        </fieldset>
+        <button className='login-form__submit-btn' type='submit'>Join</button>
       </form>
     </div>
   }

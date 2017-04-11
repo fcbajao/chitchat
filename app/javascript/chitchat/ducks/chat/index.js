@@ -15,7 +15,7 @@ export default function reducer (state: Chat = initialState, action: Action): Ch
     case types.RENDER_MESSAGE:
       const { message } = action.payload
       return {
-        messages: state.messages.concat(message)
+        messages: [message].concat(state.messages)
       }
     default:
       return state

@@ -23,7 +23,7 @@ class Room extends React.Component {
       <div className='room__header'>
         Welcome, {this.props.currentUser.username}!
       </div>
-      <div className='room__messages'>
+      <div className='room__messages-container'>
         <Messages messages={this.props.messages} />
       </div>
       <div className='room__footer'>

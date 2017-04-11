@@ -8,7 +8,7 @@ import { validateRequired } from '../../utils'
 const MessageForm = (props: { handleSubmit: Function, onSubmit: Function }) => {
   return <form className='message-form' onSubmit={props.handleSubmit(props.onSubmit)}>
     <div className='message-form__input-container'>
-      <Field name='message' className='message-form__input' component='input' type='text' />
+      <Field name='message' placeholder='Say anything...' className='message-form__input' component='input' type='text' />
     </div>
     <div className='message-form__action-container'>
       <button className='message-form__send-btn' type='submit'>Send</button>
