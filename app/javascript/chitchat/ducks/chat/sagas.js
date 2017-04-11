@@ -26,6 +26,7 @@ const subscribe = (cable: Object) => {
 }
 
 export function * joinChat (): Generator<any, any, any> {
+  yield take(types.JOIN_CHAT)
   const token = yield select(state => state.auth.token)
   const cable = yield call(services.connect, token)
   const channel = yield call(subscribe, cable)
@@ -36,7 +37,19 @@ export function * joinChat (): Generator<any, any, any> {
       yield put(action)
     }
   } finally {
-    console.log('terminated')
+    console.log('terminated joinChat')
+  }
+}
+
+export function * connectedToCable (): Generator<any, any, any> {
+  try {
+    while (true) {
+      yield take(types.CONNECTED)
+      const messages = yield call(services.fetchMessagesHistory)
+      yield put(actions.renderMessages(messages))
+    }
+  } finally {
+    console.log('terminated connectedToCable')
   }
 }
 
@@ -51,7 +64,7 @@ export function * sendMessage (): Generator<any, any, any> {
       yield put(actions.sentMessage())
     }
   } finally {
-    console.log('terminated')
+    console.log('terminated sendMessage')
   }
 }
 
@@ -65,15 +78,13 @@ export function * receiveMessage (): Generator<any, any, any> {
       yield put(actions.renderMessage(message))
     }
   } finally {
-    console.log('terminated')
+    console.log('terminated receiveMessage')
   }
 }
 
 export default function * chatSaga (): Generator<any, any, any> {
-  while (true) {
-    yield take(types.JOIN_CHAT)
-    yield fork(joinChat)
-    yield fork(sendMessage)
-    yield fork(receiveMessage)
-  }
+  yield fork(joinChat)
+  yield fork(connectedToCable)
+  yield fork(sendMessage)
+  yield fork(receiveMessage)
 }

@@ -51,11 +51,21 @@ const renderMessage = (message: Message): Action => {
   }
 }
 
+const renderMessages = (messages: Array<Message>): Action => {
+  return {
+    type: types.RENDER_MESSAGES,
+    payload: {
+      messages: messages
+    }
+  }
+}
+
 export default {
   joinChat,
   sendMessage,
   sentMessage,
   connected,
   receivedMessage,
-  renderMessage
+  renderMessage,
+  renderMessages
 }

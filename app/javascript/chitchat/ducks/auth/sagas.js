@@ -9,6 +9,7 @@ import services from './services'
 
 export function * signIn (credentials: UserCredentials): Generator<any, any, any> {
   const token = yield call(services.authenticate, credentials)
+  yield call(services.updateAxiosAuthToken, token)
   const user = decode(token)
   yield put(actions.setUser(user, token))
 }

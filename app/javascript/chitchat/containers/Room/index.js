@@ -2,15 +2,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import type { User } from '../../ducks/auth/flowTypes'
-import type { Message } from '../../ducks/chat/flowTypes'
 import { actions } from '../../ducks/chat'
-import Messages from '../../components/Messages'
+import Messages from '../../containers/Messages'
 import MessageForm from '../../containers/MessageForm'
 
 class Room extends React.Component {
   props: {
     currentUser: User,
-    messages: Array<Message>,
     onDidMount: Function
   }
 
@@ -24,7 +22,7 @@ class Room extends React.Component {
         Welcome, {this.props.currentUser.username}!
       </div>
       <div className='room__messages-container'>
-        <Messages messages={this.props.messages} />
+        <Messages />
       </div>
       <div className='room__footer'>
         <MessageForm />
@@ -35,8 +33,7 @@ class Room extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.auth.currentUser,
-    messages: state.chat.messages
+    currentUser: state.auth.currentUser
   }
 }
 

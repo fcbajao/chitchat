@@ -13,6 +13,7 @@ const csrfToken = document.querySelector('meta[name=csrf-token]')
 if (csrfToken) {
   axios.defaults.headers.common['X-CSRF-Token'] = csrfToken.getAttribute('content')
 }
+axios.defaults.headers.common['Accept'] = 'application/json'
 
 const sagaMiddleware = createSagaMiddleware()
 

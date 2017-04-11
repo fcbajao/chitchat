@@ -3,6 +3,7 @@ import type { Action } from '../flowTypes'
 import type { Chat } from './flowTypes'
 import types from './types'
 export { default as actions } from './actions'
+export { default as selectors } from './selectors'
 export { default as chatSaga } from './sagas'
 export { default as types } from './types'
 
@@ -16,6 +17,11 @@ export default function reducer (state: Chat = initialState, action: Action): Ch
       const { message } = action.payload
       return {
         messages: [message].concat(state.messages)
+      }
+    case types.RENDER_MESSAGES:
+      const { messages } = action.payload
+      return {
+        messages: messages.concat(state.messages)
       }
     default:
       return state

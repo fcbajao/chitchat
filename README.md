@@ -39,7 +39,7 @@ The app still has a long way to go and there are more tools that I need to explo
 - [ ] Add CI build
 - [ ] HMR
 - [ ] Add support for storing token in localStorage
-- [ ] Show previous messages
+- [x] Show previous messages
 - [ ] Show online users
 - [ ] Use Docker
 

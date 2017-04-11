@@ -11,6 +11,12 @@ const authenticate = (credentials: UserCredentials) => {
   })
 }
 
+const updateAxiosAuthToken = (token: string) => {
+  // Follow Authorization format as defined on https://tools.ietf.org/html/rfc6750
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
+
 export default {
-  authenticate
+  authenticate,
+  updateAxiosAuthToken
 }
