@@ -43,6 +43,10 @@ The app still has a long way to go and there are more tools that I need to explo
 - [ ] Show online users
 - [ ] Use Docker
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## Acknowledgments
 
 * Thank you internet for all the helpful resources and smart people.
