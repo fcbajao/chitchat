@@ -20,7 +20,7 @@ These are the notable tools/libraries/frameworks that I used:
 * Webpacker (with `webpacker:install:react`)
 * ActionCable (Websocket for chat)
 * SimpleCommand (Gem for writing service objects)
-* JWT (JSON Web Tokens for authentication)
+* JWT (JSON Web Token for authentication)
 * RSpec
 * ES6
 * StandardJS (For JS linting)
