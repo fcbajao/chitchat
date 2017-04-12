@@ -31,13 +31,11 @@ export default function reducer (state: Chat = initialState, action: Action): Ch
   switch (action.type) {
     case types.RENDER_MESSAGE:
       const message = buildMessage(action.payload.message)
-      console.log('render message:', message)
       return {
         messages: [message].concat(state.messages)
       }
     case types.RENDER_MESSAGES:
       const messages = action.payload.messages.map(buildMessage)
-      console.log('render messages:', messages)
       return {
         messages: messages.concat(state.messages)
       }
