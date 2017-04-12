@@ -1,5 +1,5 @@
 json.array! @messages do |message|
-  json.(message, :id)
+  json.(message, :id, :created_at)
   json.content sanitize(message.content)
 
   json.user do

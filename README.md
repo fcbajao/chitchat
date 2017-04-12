@@ -40,6 +40,7 @@ The app still has a long way to go and there are more tools that I need to explo
 - [ ] HMR
 - [ ] Add support for storing token in localStorage
 - [x] Show previous messages
+- [x] Show message timestamp
 - [ ] Show online users
 - [ ] Use Docker
 
