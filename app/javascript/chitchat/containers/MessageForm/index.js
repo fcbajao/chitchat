@@ -6,7 +6,8 @@ import { actions } from '../../ducks/chat'
 import { validateRequired } from '../../utils'
 
 const MessageForm = (props: { handleSubmit: Function, onSubmit: Function }) => {
-  return <form className='message-form' onSubmit={props.handleSubmit(props.onSubmit)}>
+  const handleSubmit = props.handleSubmit(props.onSubmit)
+  return <form className='message-form' onSubmit={handleSubmit}>
     <div className='message-form__input-container'>
       <Field name='message' placeholder='Say anything...' className='message-form__input' component='input' type='text' />
     </div>
@@ -14,12 +15,6 @@ const MessageForm = (props: { handleSubmit: Function, onSubmit: Function }) => {
       <button className='message-form__send-btn' type='submit'>Send</button>
     </div>
   </form>
-}
-
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth
-  }
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -31,7 +26,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 }
 
 const validate = validateRequired(['message'])
-const connected = connect(mapStateToProps, mapDispatchToProps)(MessageForm)
+const connected = connect(null, mapDispatchToProps)(MessageForm)
 
 export default reduxForm({
   form: 'message',

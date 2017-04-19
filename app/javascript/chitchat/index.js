@@ -8,6 +8,9 @@ import { render } from 'react-dom'
 import axios from 'axios'
 import rootReducer, { rootSaga } from './ducks'
 import App from './containers/App'
+/*eslint-disable */
+import Perf from 'react-addons-perf'
+/*eslint-enable */
 
 const csrfToken = document.querySelector('meta[name=csrf-token]')
 if (csrfToken) {
